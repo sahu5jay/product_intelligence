@@ -13,7 +13,7 @@ from src.logger import logging
 
 @dataclass
 class DataIngestionConfig:
-    """Artifact path configurations for all three assignment components."""
+    """Artifact path configurations for all three components."""
     pricing_raw_path: str = os.path.join('artifacts', "pricing_raw.csv")
     pricing_train_path: str = os.path.join('artifacts', "pricing_train.csv")
     pricing_test_path: str = os.path.join('artifacts', "pricing_test.csv")
@@ -25,7 +25,7 @@ class DataIngestion:
         self.ingestion_config = DataIngestionConfig()
 
     def initiate_data_ingestion(self):
-        logging.info("--- Data Ingestion Started (Assignment Integrated Mode) ---")
+        logging.info("--- Data Ingestion Started ---")
         try:
             # Create artifacts folder
             os.makedirs(os.path.dirname(self.ingestion_config.pricing_raw_path), exist_ok=True)

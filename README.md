@@ -65,3 +65,43 @@ Handling the Review Data (Text)
     The Problem: - originally tried to stream the Amazon reviews directly from the internet, but the "Hugging Face" library blocked the request for security reasons
 
     The Solution - We pivoted to a Local Manual Ingestion strategy. You manually downloaded the All_Beauty.jsonl file, and the script now reads it directly from your computer.
+
+Summary of the datasets
+
+House Prices Dataset
+--- Pricing Statistics ---
+count      1168.000000
+mean     181441.541952
+std       77263.583862
+min       34900.000000
+25%      130000.000000
+50%      165000.000000
+75%      214925.000000
+max      745000.000000
+Name: SalePrice, dtype: float64
+Skewness: 1.74 (High skew > 1 requires Log Transform)
+Kurtosis: 5.48 (High kurtosis indicates heavy outliers)
+Number of statistical outliers: 48
+
+Fashion MNIST "Virtual Design Lab"
+--- Review Sentiment Distribution ---
+stars
+5    57.28
+4    20.00
+3    10.00
+1     7.20
+2     5.52
+Name: proportion, dtype: float64
+
+--- Review Length Stats ---
+count    5000.000000
+mean       71.428600
+std        88.217083
+min         0.000000
+25%        17.000000
+50%        45.000000
+75%        92.000000
+max      1511.000000
+Name: word_count, dtype: float64
+Missing Review Texts: 0
+
