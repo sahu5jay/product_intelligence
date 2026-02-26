@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+.env
+
+# Data and Artifacts (Crucial to avoid uploading 300MB+ files)
+artifacts/
+notebook/data/*.jsonl
+notebook/data/*.parquet
+notebook/data/*.gz
+notebook/data/train.csv
+
+notebook/data/All_Beauty.jsonl
+artifacts/
+venv/
+
+# Logs
+cat_dog.log
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
