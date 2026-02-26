@@ -49,7 +49,7 @@ Amazon Reviews  "Voice of the Customer":
 Data Ingestion Component
 The Data Ingestion stage is the "entry point" of our project. Its main job is to gather data from three different places and organize them into a single folder called artifacts so the rest of the pipeline can use them easily.
 
-Handling the Pricing Data (Numbers)
+Handling the (Numbers)
 
     What it does: It reads the file and immediately splits it into two parts: a Training set (80%) and a Testing set (20%).
     Why: This ensures that when we build our price-prediction model later, we have a "secret" set of data to test if the model actually learned or just memorized the answers.
@@ -84,6 +84,12 @@ Kurtosis: 5.48 (High kurtosis indicates heavy outliers)
 Number of statistical outliers: 48
 
 Fashion MNIST "Virtual Design Lab"
+--- Fashion Image Stats ---
+Dataset Mean: 0.2829
+Dataset Std Dev: 0.3531
+Class Distribution: Counter({np.int64(9): 6000, np.int64(0): 6000, np.int64(3): 6000, np.int64(2): 6000, np.int64(7): 6000, np.int64(5): 6000, np.int64(1): 6000, np.int64(6): 6000, np.int64(4): 6000, np.int64(8): 6000})
+
+Amazon Reviews  "Voice of the Customer"
 --- Review Sentiment Distribution ---
 stars
 5    57.28
@@ -105,3 +111,40 @@ max      1511.000000
 Name: word_count, dtype: float64
 Missing Review Texts: 0
 
+Summary of House Price Data
+Target Fix: SalePrice is right-skewed; apply Log Transformation.
+
+Missing Data: PoolQC, MiscFeature, and Alley are >90% empty; treat "NaN" as a specific category called "None".
+
+Predictive Power: Neighborhood, OverallQual, and GrLivArea are your strongest features.
+
+Redundancy: Street and Utilities should be dropped as they provide no statistical variance.
+
+
+---------------------------------
+Encoding for categorical Data of Pricing Data Summary
+---------------------------------
+
+Feature     	        Encoding Type	                    Why
+Neighborhood	    Target Mean Encoding	         High cardinality + price influence
+ExterQual	        Ordinal Encoding	             Natural quality order
+KitchenQual	        Ordinal Encoding	             Quality scale
+BsmtQual	        Ordinal Encoding	             Quality scale
+Foundation	        Domain-based Ordinal	         Structural durability ranking
+
+
+Skewness Rule
+Skewness	Meaning
+0	Perfect normal
+0 – 0.5	Approximately normal
+0.5 – 1	Moderately skewed
+> 1	Highly skewed
+
+
+GrLivArea      1.366560
+TotalBsmtSF    1.524255
+SalePrice      0.121347
+
+GrLivArea → Needs transformation
+TotalBsmtSF → Needs transformation
+SalePrice → Already good

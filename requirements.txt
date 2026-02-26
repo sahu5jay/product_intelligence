@@ -2,3 +2,6 @@ pandas
 torchvision 
 datasets 
 scikit-learn
+torch
+matplotlib
+transformers
