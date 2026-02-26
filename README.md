@@ -148,3 +148,19 @@ SalePrice      0.121347
 GrLivArea → Needs transformation
 TotalBsmtSF → Needs transformation
 SalePrice → Already good
+
+Review Intelligence Dataset Summary
+The system utilizes a subset of the Amazon "All_Beauty" reviews dataset to perform domain-specific text intelligence tasks. This data powers the automated sentiment analysis and summarization features of the platform
+
+Dataset Overview: The processed dataset contains 5,000 unique product reviews.
+
+Data Structure: Each entry includes three core features:
+review_body: The raw text of the customer feedback.
+stars: The numerical rating (1–5) serving as the sentiment label.
+product_category: Fixed as "All_Beauty" for domain-specific context.
+
+Text Statistics:
+Average Review Length: ~71 words, providing sufficient context for sentiment extraction.
+95th Percentile Length: 227 words, which informs the tokenization strategy by setting the max_length parameter for the LLM.
+
+Business Application: This data is used to fine-tune a pre-trained Large Language Model (e.g., DistilBERT or GPT-2) to transform unstructured feedback into actionable marketing insights.
