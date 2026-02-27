@@ -1,0 +1,17 @@
+pandas
+torchvision
+datasets
+scikit-learn
+torch
+matplotlib
+transformers
+xgboost
+catboost
+torch
+torchaudio
+datasets
+nltk
+python-dotenv
+ipykernel
+matplotlib
+seaborn

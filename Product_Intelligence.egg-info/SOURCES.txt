@@ -1,0 +1,7 @@
+README.md
+setup.py
+Product_Intelligence.egg-info/PKG-INFO
+Product_Intelligence.egg-info/SOURCES.txt
+Product_Intelligence.egg-info/dependency_links.txt
+Product_Intelligence.egg-info/requires.txt
+Product_Intelligence.egg-info/top_level.txt

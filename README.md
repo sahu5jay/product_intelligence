@@ -164,3 +164,69 @@ Average Review Length: ~71 words, providing sufficient context for sentiment ext
 95th Percentile Length: 227 words, which informs the tokenization strategy by setting the max_length parameter for the LLM.
 
 Business Application: This data is used to fine-tune a pre-trained Large Language Model (e.g., DistilBERT or GPT-2) to transform unstructured feedback into actionable marketing insights.
+
+House Price Prediction Model Training
+This project aims to predict house prices based on various property features using machine learning techniques. The model leverages both numerical and categorical features, applying advanced preprocessing pipelines to handle missing values, encode categorical variables, and scale numeric data.
+
+Dataset
+
+The dataset contains 1460 rows and 14 key features, including property size, quality ratings, neighborhood, and garage attributes.
+Features are categorized into:
+Numerical features: e.g., OverallQual, GrLivArea, GarageCars
+Ordinal features: e.g., ExterQual, KitchenQual, BsmtQual, GarageFinish
+Nominal features: e.g., Neighborhood, Foundation, GarageType, SaleCondition, MSZoning, HouseStyle
+
+
+Preprocessing Steps
+Numerical Columns
+    Imputed missing values with median.
+    Standardized using StandardScaler.
+Ordinal Columns
+    Imputed missing values with most frequent value.
+    Encoded using OrdinalEncoder with predefined domain categories.
+    Scaled using StandardScaler.
+Nominal Columns
+    Imputed missing values with most frequent value.
+    Encoded using OrdinalEncoder to avoid feature explosion (optional: OneHotEncoder for full categorical representation).
+
+Pipeline & ColumnTransformer
+    All preprocessing steps are combined using sklearn’s Pipeline and ColumnTransformer for reproducible and clean transformations.
+
+Model training for House Prices
+
+
+Pipeline Execution SummaryYour 
+logs confirm that the Pricing Intelligence component of your multi-modal platform has finished training.
+Pre-processing: Successfully serialized the data transformation pipeline into artifacts/preprocessor.pkl.
+Model Benchmarking: The system evaluated 6 different algorithms using hyperparameter tuning.
+Performance Winner: Gradient Boosting achieved the highest accuracy with an $R^2$ Score of 0.8290.
+Persistence: The best-performing model was saved as artifacts/model.pkl for real-time inference in your Flask app.
+
+Model	R2 Score
+Gradient Boosting	0.8290
+Linear Regression	0.8202
+Random Forest	0.8142
+XGBRegressor	0.8063
+AdaBoost	0.7653
+Decision Tree	0.7215
+
+Installation & Setup
+
+Clone the repository:
+
+git clone [https://github.com/sahu5jay/product_intelligence.git](https://github.com/sahu5jay/product_intelligence.git)
+cd product_intelligence
+
+Create a Conda Environment:
+conda create -p venv python=3.10 -y
+conda activate venv/
+
+Install Dependencies:
+pip install -r requirements.txt
+pip install -e .
+
+Training the Models
+python -m src.pipelines.trainer_pipeline
+
+Running the Application
+python application.py

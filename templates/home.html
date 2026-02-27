@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Modal AI Intelligence</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: #1a73e8; margin-bottom: 30px; }
+        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { border: 1px solid #e0e0e0; padding: 20px; border-radius: 10px; background: #fafafa; }
+        label { display: block; margin: 10px 0 5px; font-weight: 600; font-size: 0.9em; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        textarea { height: 100px; resize: none; }
+        .btn-submit { width: 100%; background: #1a73e8; color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1em; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .btn-submit:hover { background: #1557b0; }
+        .results-section { margin-top: 30px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; border-top: 2px solid #eee; padding-top: 20px; }
+        .prediction-box { background: #e8f0fe; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 10px; }
+        .gan-image { width: 200px; height: 200px; border: 2px solid #ddd; border-radius: 10px; display: block; margin: auto; background: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 Fusion Product Intelligence</h1>
+    
+    <form action="{{ url_for('predict_datapoint') }}" method="POST">
+        <div class="section-grid">
+            <div class="card">
+                <h3>🏠 House Parameters</h3>
+                <label>Overall Quality (1-10)</label>
+                <input type="number" name="OverallQual" min="1" max="10" required>
+                
+                <label>Living Area (Sqft)</label>
+                <input type="number" name="GrLivArea" required>
+                
+                <label>Garage Capacity (Cars)</label>
+                <input type="number" name="GarageCars" required>
+                
+                <label>Kitchen Quality</label>
+                <select name="KitchenQual">
+                    <option value="Ex">Excellent</option>
+                    <option value="Gd">Good</option>
+                    <option value="TA">Average/Typical</option>
+                    <option value="Fa">Fair</option>
+                </select>
+
+                <label>Basement Quality</label>
+                <select name="BsmtQual">
+                    <option value="Ex">Excellent</option>
+                    <option value="Gd">Good</option>
+                    <option value="TA">Typical</option>
+                    <option value="Fa">Fair</option>
+                </select>
+
+                <input type="hidden" name="ExterQual" value="TA"> <input type="hidden" name="GarageFinish" value="Unf"> </div>
+
+            <div class="card">
+                <h3>💬 Customer Insights</h3>
+                <label>Write a Review</label>
+                <textarea name="review_text" placeholder="Tell us about the product experience..." required></textarea>
+                
+                <p style="font-size: 0.8em; color: #666; margin-top: 20px;">
+                    *Note: Our GAN will generate a unique fashion design based on this submission.
+                </p>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Run All AI Models</button>
+    </form>
+
+    {% if price_results or sentiment_results %}
+    <div class="results-section">
+        <div>
+            <h3>📊 Analysis Results</h3>
+            <div class="prediction-box">
+                <strong>Predicted Price:</strong> 
+                <span style="font-size: 1.5em; color: #1a73e8;">${{ price_results }}</span>
+            </div>
+            <div class="prediction-box">
+                <strong>Sentiment Analysis:</strong> 
+                <span style="font-size: 1.2em; font-weight: bold;">{{ sentiment_results }}</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <h3>🎨 Fashion GAN Design</h3>
+            {% if fashion_image %}
+                <img class="gan-image" src="data:image/png;base64,{{ fashion_image }}" alt="Generated Fashion">
+            {% else %}
+                <div class="gan-image" style="display:flex; align-items:center; justify-content:center; color:#999;">
+                    No image generated
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
